@@ -23,11 +23,27 @@ namespace IngameScript
     partial class Program : MyGridProgram
     {
         List<IMyCameraBlock> cameras = new List<IMyCameraBlock>();
+        List<ScaningElementManiger> element =new List<ScaningElementManiger>();
+
+
+        //amount of elements in each scaning element max 5 fore scaning att 5km 
+        int antaletElement = 5;
+
 
 
         public Program()
         {
             GridTerminalSystem.GetBlocksOfType(cameras);
+            int i = 0;
+            foreach (IMyCameraBlock block in cameras)
+            {
+                element[i].add(block);
+                i++;
+                i= i%antaletElement;
+
+
+            }
+
 
         }
 

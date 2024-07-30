@@ -52,7 +52,7 @@ namespace IngameScript
             {
                 t += (int)camera.AvailableScanRange;
             }
-            return t;
+            return t/elemet;
 
         }
         public void onOff(bool stat)
