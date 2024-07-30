@@ -27,7 +27,7 @@ namespace IngameScript
 
         public Program()
         {
-            List<IMyCameraBlock> cameras = new List<IMyCameraBlock>();
+            GridTerminalSystem.GetBlocksOfType(cameras);
 
         }
 
