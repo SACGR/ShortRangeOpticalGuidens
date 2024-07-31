@@ -63,5 +63,16 @@ namespace IngameScript
             }
 
         }
+        public MyDetectedEntityInfo point(int range)
+        {
+            MyDetectedEntityInfo info;
+            nuvarandeElement = nuvarandeElement % elemet;
+            info = Cameras[nuvarandeElement].Raycast(range);
+
+            nuvarandeElement++;
+            return info;
+
+
+        }
     }
 }

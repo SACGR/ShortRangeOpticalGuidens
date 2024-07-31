@@ -28,6 +28,8 @@ namespace IngameScript
         //Raycost per sec
         const int frequensy = 2;
 
+        int maxRangeScan = 500; 
+
 
 
         List<IMyCameraBlock> cameras = new List<IMyCameraBlock>();
@@ -62,6 +64,45 @@ namespace IngameScript
 
         public void Main(string argument, UpdateType updateSource)
         {
+            if (argument.Equals("on"))
+            {
+                foreach(ScaningElementManiger elements in element)
+                {
+                    elements.onOff(true);
+                }
+            }
+            if (argument.Equals("off"))
+            {
+                foreach (ScaningElementManiger elements in element)
+                {
+                    elements.onOff(false);
+                }
+            }
+            if (argument.Equals("scan"))
+            {
+                for (int i = 0; i < antaletElement; i++) {
+                    
+                    
+                     if (element[i].range() > maxRangeScan && targetList[i].IsEmpty())
+                    {
+                        targetList[i] = element[i].point(maxRangeScan);
+                        i = antaletElement +1;
+                    }
+                
+                
+                }
+
+
+
+
+            }
+
+
+
+
+
+
+
             for (int i = 0; i < antaletElement; i++) {
                 if (targetList[i].IsEmpty())
                 {
