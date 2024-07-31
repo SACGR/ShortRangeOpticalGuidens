@@ -22,18 +22,27 @@ namespace IngameScript
 {
     partial class Program : MyGridProgram
     {
-        List<IMyCameraBlock> cameras = new List<IMyCameraBlock>();
-        List<ScaningElementManiger> element =new List<ScaningElementManiger>();
-
-
         //amount of elements in each scaning element max 5 fore scaning att 5km 
-        int antaletElement = 5;
+        const int antaletElement = 5;
+        
+        //Raycost per sec
+        const int frequensy = 2;
 
+
+
+        List<IMyCameraBlock> cameras = new List<IMyCameraBlock>();
+        ScaningElementManiger[] element = new ScaningElementManiger[antaletElement];
+        
+        
+
+        MyDetectedEntityInfo[] targetList = new MyDetectedEntityInfo[antaletElement];
 
 
         public Program()
         {
+
             GridTerminalSystem.GetBlocksOfType(cameras);
+            //adds the elemetn to the tracking grups
             int i = 0;
             foreach (IMyCameraBlock block in cameras)
             {
@@ -53,6 +62,29 @@ namespace IngameScript
 
         public void Main(string argument, UpdateType updateSource)
         {
+            for (int i = 0; i < antaletElement; i++) {
+                if (targetList[i].IsEmpty())
+                {
+                    return;
+                }
+                targetList[i] = element[i].scan(targetList[i].Position+(targetList[i].Velocity/frequensy));
+
+
+
+
+
+
+
+
+
+            
+            
+            }
+
+
+
+
+
         }
     }
 }
